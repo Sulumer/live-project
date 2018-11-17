@@ -17,7 +17,7 @@ def submit():
     people_num = int(people_num_input.get())
     # 起始时间
     # 用正则表达式匹配
-    pattern = re.compile(r'(\d{4}-\d{1,2}-\d{1,2} \d{1,2}:\d{1,2}:\d{1,2})')
+    pattern = re.compile(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})')
     time_start = time_start_input.get()
     match = pattern.match(time_start)
     if match == None:
@@ -39,15 +39,23 @@ def submit():
     if people_num < 1 or people_num > 8:
         tkinter.messagebox.showerror("提示","人数错误！")
         return
+    
+    people_list = draw.init(people_num, keyword, time_start, time_end)
+    
+    if len(people_list) == 0:
+        tkinter.messagebox.showerror("提示","没有用户满足抽奖条件！")
+        return
+    
+    # 展示页面
     top1 = Toplevel()
     image = Image.open('mdbg.jpg')
     img = ImageTk.PhotoImage(image)
     canvas = Canvas(top1, width=image.width, height=image.height, bg='white')
     canvas.create_image(0, 0, image=img, anchor="nw")
+    canvas.create_text(image.width / 2, 50, text="抽奖话题:"+keyword, font=('黑体', 20))
     canvas.create_text(image.width / 2, 100, text="获奖名单", font=('黑体', 20))
     height = 150
-    people_list = draw.init(people_num, keyword, time_start, time_end)
-    for i in range(0, people_num):
+    for i in range(0, len(people_list)):
         canvas.create_text(image.width / 2-100, height + i * 50, text="获奖用户", font=('黑体', 15))
         canvas.create_text(image.width / 2 + 100, height + i * 50, text=people_list[i], font=('黑体', 15))
 

@@ -28,10 +28,13 @@ Winner = []
 #     print_winner()
 
 def draw2(winners,list1,list2):  #算法抽奖
+    
     i = 1
     pos = 0
 #     print(list2)
     while i <= winners:
+        if pos == len(list2):
+            break
         person = list2[pos]
         pos = pos + 1
         flag = check(person,list1)  #判断用户是否被过滤、是否已获奖
@@ -41,16 +44,16 @@ def draw2(winners,list1,list2):  #算法抽奖
             Winner.append(person)
             i = i + 1
 #             print("len2: %d", len(Winner))
-    print_winner()
+#     print_winner()
     
 def rand(total): #生成随机数
     return random.randint(1,total)
 
-def print_winner():
-    i = 1
-    while i <= len(Winner) :
-        print(Winner[i-1])
-        i = i + 1
+# def print_winner():
+#     i = 1
+#     while i <= len(Winner) :
+#         print(Winner[i-1])
+#         i = i + 1
     
 def check(num,list1): #判断用户是否被过滤、是否已获奖
     num2 = list1.count(num)
