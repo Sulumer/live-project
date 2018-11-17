@@ -37,8 +37,10 @@ def check(name):
 
 
 #根据聊天程度判断每个人的权重
-def workforperson():
+#根据num筛选掉小于num的名单
+def workforperson(num):
     person = {}
+    list=[]
     with open('record.txt', encoding='utf-8') as f:
         line =0
         for yy in f.readlines():
@@ -58,7 +60,11 @@ def workforperson():
                     else:
                         val=0
                         person[idd]=1
-    return person
+    f.close()
+    for key in person.keys():
+        if person[key]>=num:
+            list.append(key)
+    return list
 
 
 #判断是否符合抽奖时间
