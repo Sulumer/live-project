@@ -2,7 +2,7 @@
 
 import random
 random.random()
-
+person = {}
 #将得到的名字进行提取他们的qq号或者邮箱
 def check(name):
     ln=len(name)
@@ -39,7 +39,7 @@ def check(name):
 #根据聊天程度判断每个人的权重
 #根据num筛选掉小于num的名单
 def workforperson(num):
-    person = {}
+    
     list=[]
     with open('record.txt', encoding='utf-8') as f:
         line =0
@@ -49,7 +49,7 @@ def workforperson(num):
             if (len(yy) >= 23):
                 idd = check(yy)
                 if (idd != "#" and yy[4] == '-' and yy[7] == '-' and yy[13] == ':' and yy[16] == ':'):
-                    print(idd)
+#                     print(idd)
                     if(idd in person.keys()):
                         val=person.get(idd)
                         val+=1
@@ -87,8 +87,8 @@ def checktime(start_time, deadline , now_time):
     return 0
 
 #计算抽奖的math值
-def workformath():
-    person = workforperson()
+def workformath(num):
+    workforperson(num)
     totalval=0
     T_value=0
     KeyCount = len(person)
@@ -98,13 +98,22 @@ def workformath():
         totalval+=person[key]
     cnt=0
     Random = random.random()
-    print(Random)
+#     print(Random)
     for key in person.keys():
         T_value=person[key]/totalval
         p_values=T_value*(KeyCount*0.02)
         maths[key]=Random*(1-p_values)
         cnt+=1
-    return maths
+#     print(maths)
+    maths = sorted(maths.items(),key = lambda item:item[1])
+#     print(maths)
+    list = []
+    for i in maths:
+        list.append(i[0])
+#         print(i[0])
+#         print(i[1])
+#     print(list)
+    return list
 
 #分一二三等奖的名单-qq号
 def prizes1():

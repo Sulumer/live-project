@@ -87,7 +87,7 @@ def selectperson(keyword,start_time,deadline):
 #    print(xx)
 
 
-person=selectperson("#我要换组#","2018-08-20 00:00:00","2018-12-30 00:00:00")
-
-for name in person:
-    print(name)
+# person=selectperson("#我要换组#","2018-08-20 00:00:00","2018-12-30 00:00:00")
+# 
+# for name in person:
+#     print(name)
