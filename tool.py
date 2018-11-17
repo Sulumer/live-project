@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
 
 import random
-random.random()
 person = {}
 #将得到的名字进行提取他们的qq号或者邮箱
 def check(name):
@@ -86,6 +85,7 @@ def checktime(start_time, deadline , now_time):
             return 1
     return 0
 
+
 #计算抽奖的math值
 def workformath(num):
     workforperson(num)
@@ -97,12 +97,10 @@ def workformath(num):
     for key in person.keys():
         totalval+=person[key]
     cnt=0
-    Random = random.random()
-#     print(Random)
     for key in person.keys():
         T_value=person[key]/totalval
         p_values=T_value*(KeyCount*0.02)
-        maths[key]=Random*(1-p_values)
+        maths[key]=random.random()*1.1*(1-p_values)
         cnt+=1
 #     print(maths)
     maths = sorted(maths.items(),key = lambda item:item[1])
