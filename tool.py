@@ -44,14 +44,11 @@ def workforperson(num):
     with open('record.txt', encoding='utf-8') as f:
         line =0
         for yy in f.readlines():
-            name = yy[20:]
-            if("系统消息(10000)"in name):
+            if("系统消息"in yy):
                 continue
-            if len(name)>1:
-                idd=check(name)
-                if idd=="#":
-                    continue
-                else:
+            if (len(yy) >= 23):
+                idd = check(yy)
+                if (idd != "#" and yy[4] == '-' and yy[7] == '-' and yy[13] == ':' and yy[16] == ':'):
                     print(idd)
                     if(idd in person.keys()):
                         val=person.get(idd)
@@ -125,4 +122,5 @@ def prizes1():
         if maths[key]<= 0.6 and maths[key]>0.3:
             prize3.append(key)
 
-#print(checktime("2018-10-09 23:00","2018-12-30 20:00","2018-11-01 08:00"))
+# list=workforperson(1)
+# print(list)
