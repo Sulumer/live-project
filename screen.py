@@ -63,31 +63,3 @@ def selectperson(keyword,start_time,deadline):
                     list.append(idd)
                 fg=0
     return list
-
-
-# def keyWords(key):
-#     flag = 0
-#     with open("record.txt", "r", encoding="utf-8") as f:
-#         lines = f.readlines()
-#        # print(lines)
-#     with open("result.txt", "w", encoding="utf-8") as f_w:
-#         for line in lines:
-#             if flag == 0:
-#                 temp = line
-#                 flag = 1
-#             if key in line:
-#                 f_w.write(temp)
-#                 temp ="\0"
-#                 flag = 0
-#     return
-
-# keyWords("#我要换组#")
-# test = open("result.txt","r+",encoding="utf-8")
-# for xx in test.readlines():
-#    print(xx)
-
-
-# person=selectperson("#我要换组#","2018-08-20 00:00:00","2018-12-30 00:00:00")
-# 
-# for name in person:
-#     print(name)
