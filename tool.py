@@ -38,7 +38,6 @@ def check(name):
 #根据聊天程度判断每个人的权重
 #根据num筛选掉小于num的名单
 def workforperson(num):
-    
     list=[]
     with open('record.txt', encoding='utf-8') as f:
         line =0
@@ -102,32 +101,8 @@ def workformath(num):
         p_values=T_value*(KeyCount*0.02)
         maths[key]=random.random()*1.1*(1-p_values)
         cnt+=1
-#     print(maths)
     maths = sorted(maths.items(),key = lambda item:item[1])
-#     print(maths)
     list = []
     for i in maths:
         list.append(i[0])
-#         print(i[0])
-#         print(i[1])
-#     print(list)
     return list
-
-#分一二三等奖的名单-qq号
-def prizes1():
-    prize1=[]
-    prize2=[]
-    prize3=[]
-    maths=workformath()
-    for key in maths.keys():
-        if maths[key]<=0.1:
-            print(maths[key])
-            prize1.append(key)
-            print(key)
-        if maths[key]<= 0.3 and maths[key]>0.1:
-            prize2.append(key)
-        if maths[key]<= 0.6 and maths[key]>0.3:
-            prize3.append(key)
-
-# list=workforperson(1)
-# print(list)
